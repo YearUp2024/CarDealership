@@ -1,8 +1,11 @@
 package com.pluralsight;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
+
 
 public class DealershipFileManager {
     private static String fileName = "inventory.csv";
@@ -35,10 +38,52 @@ public class DealershipFileManager {
                     vehicles.add(new Vehicle(vinNumber, makeYear, make, model, vehicleType, color, odometer, price));
                 }
             }
-
+            bufferedReader.close();
         }catch(Exception e){
             e.printStackTrace();
         }
         return dealership;
+    }
+
+    public static String saveDealership(Dealership dealership){
+        if(dealership == null){
+            return "Dealership is Null";
+        }else{
+            try {
+                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
+
+                bufferedWriter.write(new StringBuilder()
+                        .append(dealership.getName()).append("|")
+                        .append((dealership.getAddress())).append("|")
+                        .append((dealership.getPhone())).toString()
+                );
+
+                for(Vehicle vehicle : dealership.getAllVehicles()){
+                    vehicle.getVin();
+                    vehicle.getYear();
+                    vehicle.getMake();
+                    vehicle.getModel();
+                    vehicle.getVehicleType();
+                    vehicle.getColor();
+                    vehicle.getOdometer();
+                    vehicle.getPrice();
+
+                    bufferedWriter.write(new StringBuilder()
+                            .append(vehicle.getVin()).append("|")
+                            .append((vehicle.getYear())).append("|")
+                            .append((vehicle.getMake())).append("|")
+                            .append((vehicle.getModel())).append("|")
+                            .append((vehicle.getVehicleType())).append("|")
+                            .append((vehicle.getColor())).append("|")
+                            .append((vehicle.getOdometer())).append("|")
+                            .append((vehicle.getPrice())).toString()
+                    );
+                }
+                bufferedWriter.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return "Dealership is added successfully!";
+        }
     }
 }

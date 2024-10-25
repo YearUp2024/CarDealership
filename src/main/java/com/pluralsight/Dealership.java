@@ -103,7 +103,7 @@ public class Dealership {
         return vehicles;
     }
 
-    public List getAllVehicles(){
+    public List<Vehicle> getAllVehicles(){
         return inventory;
     }
 
