@@ -7,18 +7,18 @@ public class Vehicle {
     private String model;
     private String vehicleType;
     private String color;
-    private int odometor;
+    private int odometer;
     private double price;
 
-    public Vehicle(double price, int odometor, String color, String vehicleType, String model, String make, int year, int vin) {
-        this.price = price;
-        this.odometor = odometor;
-        this.color = color;
-        this.vehicleType = vehicleType;
-        this.model = model;
-        this.make = make;
-        this.year = year;
+    public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
         this.vin = vin;
+        this.year = year;
+        this.make = make;
+        this.model = model;
+        this.vehicleType = vehicleType;
+        this.color = color;
+        this.odometer = odometer;
+        this.price = price;
     }
 
     public void setVin(int vin) {
@@ -45,8 +45,8 @@ public class Vehicle {
         this.color = color;
     }
 
-    public void setOdometor(int odometor) {
-        this.odometor = odometor;
+    public void setOdometer(int odometer) {
+        this.odometer = odometer;
     }
 
     public void setPrice(double price) {
@@ -77,8 +77,8 @@ public class Vehicle {
         return color;
     }
 
-    public int getOdometor() {
-        return odometor;
+    public int getOdometer() {
+        return odometer;
     }
 
     public double getPrice() {
