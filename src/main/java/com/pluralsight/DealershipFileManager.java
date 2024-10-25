@@ -10,6 +10,10 @@ import java.util.ArrayList;
 public class DealershipFileManager {
     private static String fileName = "inventory.csv";
 
+    /**
+     * This getting a Dealership with vehicles.
+     * @return dealership.
+     */
     public static Dealership getDealership(){
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         Dealership dealership = null;
@@ -26,7 +30,7 @@ public class DealershipFileManager {
 
             while((line = bufferedReader.readLine()) != null){
                 String[] newLine = line.split("\\|");
-                if(newLine.length == 7){
+                if(newLine.length == 8){
                     int vinNumber = Integer.parseInt(newLine[0]);
                     int makeYear = Integer.parseInt(newLine[1]);
                     String make = newLine[2];
@@ -45,6 +49,11 @@ public class DealershipFileManager {
         return dealership;
     }
 
+    /**
+     * This is saving a dealership
+     * @param dealership
+     * @return new dealership
+     */
     public static String saveDealership(Dealership dealership){
         if(dealership == null){
             return "Dealership is Null";
