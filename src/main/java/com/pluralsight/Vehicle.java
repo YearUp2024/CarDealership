@@ -140,7 +140,7 @@ public class Vehicle {
      * This is a color getter.
      * @return
      */
-    public ColorCodes getColor() {
+    public String getColor() {
         return color;
     }
 
