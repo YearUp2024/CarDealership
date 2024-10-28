@@ -10,7 +10,7 @@ public class Dealership {
     private ArrayList<Vehicle> inventory;
 
     /**
-     * This is a constrecture.
+     * This is a contracture.
      * @param name
      * @param address
      * @param phone
