@@ -17,6 +17,7 @@ public class DealershipFileManager {
     public static Dealership getDealership(){
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         Dealership dealership = null;
+
         try{
             BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
 

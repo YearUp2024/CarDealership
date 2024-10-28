@@ -121,12 +121,23 @@ public class Dealership {
         return vehicles;
     }
 
+    public List<Vehicle> getVehiclesByYear(int min, int max){
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+
+        for(Vehicle vehicle : inventory){
+            if(vehicle.getYear() > min && vehicle.getYear() < max){
+                vehicles.add(vehicle);
+            }
+        }
+        return vehicles;
+    }
+
     /**
      * This is adding vehicle by millage into a ArrayList and returning that into a List.
      * @param color
      * @return vehicles by color.
      */
-    public List getVehiclesByColor(ColorCodes color){
+    public List getVehiclesByColor(String color){
         ArrayList<Vehicle> listOfVehicles = new ArrayList<>();
 
         for(Vehicle vehicle : inventory){
