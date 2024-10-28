@@ -65,7 +65,7 @@ public class DealershipFileManager {
                 bufferedWriter.write(new StringBuilder()
                         .append(dealership.getName()).append("|")
                         .append((dealership.getAddress())).append("|")
-                        .append((dealership.getPhone())).toString()
+                        .append((dealership.getPhone())).append("\n").toString()
                 );
 
                 for(Vehicle vehicle : dealership.getAllVehicles()){
@@ -86,7 +86,7 @@ public class DealershipFileManager {
                             .append((vehicle.getVehicleType())).append("|")
                             .append((vehicle.getColor())).append("|")
                             .append((vehicle.getOdometer())).append("|")
-                            .append((vehicle.getPrice())).toString()
+                            .append((vehicle.getPrice())).append("\n").toString()
                     );
                 }
                 bufferedWriter.close();

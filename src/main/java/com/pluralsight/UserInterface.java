@@ -61,10 +61,48 @@ public class UserInterface {
     }
 
     public void processAddVehicleRequest(){
+        int vin = Console.PromptForInt("Enter your Vin number: ");
+        int year = Console.PromptForInt("Enter make year: ");
+        String make = Console.PromptForString("Enter Car company name: ");
+        String model = Console.PromptForString("Enter model name: ");
+        String type = Console.PromptForString("Enter type name: ");
+        String color = Console.PromptForString("Enter color: ");
+        int mileage = Console.PromptForInt("Enter mileage: ");
+        double price = Console.PromptForInt("Enter price: ");
 
+        Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, mileage, price);
+        this.dealership.addVehicle(vehicle);
+        DealershipFileManager.saveDealership(this.dealership);
+
+        boolean added = dealership.addVehicle(vehicle);
+        if(added){
+            System.out.println("New vehicle added");
+        }else{
+            System.out.println("New vehicle was not added");
+        }
     }
-//
-//    public void rocessRemoveVehicleRequest(){}
+
+    public void processRemoveVehicleRequest(){
+        int vin = Console.PromptForInt("Enter vin number of the vehicle you want to remove: ");
+
+        Vehicle vehicleToRemove = null;
+        for(Vehicle vehicle : dealership.getInventory()){
+            if(vehicle.getVin() == vin){
+                vehicleToRemove = vehicle;
+                break;
+            }
+        }
+
+        if(vehicleToRemove != null){
+            boolean remove = dealership.removeVehicle(vehicleToRemove);
+
+            if(remove){
+                System.out.println("Vehicle was removed");
+            }else{
+                System.out.println("There was something wrong with remove the vehicle");
+            }
+        }
+    }
 
     public void displayAll(){
         String userChoice;
@@ -77,6 +115,8 @@ public class UserInterface {
             System.out.println("Display by Millage:[M] ");
             System.out.println("Display by Car Color:[CC] ");
             System.out.println("Display by Car Type:[T] ");
+            System.out.println("Add a vehicle:[Add] ");
+            System.out.println("Remove a vehicle:[Remove] ");
             System.out.println("Enter [E] to exit");
 
             userChoice = Console.PromptForString("Please enter your choice: ");
@@ -109,6 +149,14 @@ public class UserInterface {
                     break;
                 case "T":
                     processGetByVehicleTypeRequest();
+                    System.out.println("\n");
+                    break;
+                case "Add":
+                    processAddVehicleRequest();
+                    System.out.println("\n");
+                    break;
+                case "remove":
+                    processRemoveVehicleRequest();
                     System.out.println("\n");
                     break;
                 default:
